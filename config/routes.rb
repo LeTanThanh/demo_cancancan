@@ -6,5 +6,5 @@ Rails.application.routes.draw do
     sessions: "user/sessions"
   }
 
-  resources :posts, only: %i(show edit update)
+  resources :posts, only: %i(show edit update destroy)
 end

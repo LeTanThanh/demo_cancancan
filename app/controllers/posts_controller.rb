@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :load_post, only: %i(show edit update)
+  before_action :load_post, only: %i(show edit update destroy)
 
   def index
     @posts = Post.page(params[:page]).per 5
@@ -18,6 +18,16 @@ class PostsController < ApplicationController
     else
       flash[:danger] = "Update post fail"
       render :edit
+    end
+  end
+
+  def destroy
+    if @post.destroy
+      flash[:success] = "Delele post success"
+      redirect_to root_url
+    else
+      flash[:danger] = "Delele post fail"
+      redirect_to @post
     end
   end
 
