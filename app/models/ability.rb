@@ -11,6 +11,7 @@ class Ability
       # ability for logged in usser
       can :manage, Post, user_id: user.id
 
+      # ability for admin usser
       if user.is_admin?
         can :manage, :all
       end

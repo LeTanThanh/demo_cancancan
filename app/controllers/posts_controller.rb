@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
   before_action :load_post, only: %i(show edit update destroy)
+  before_action :authorize_by_cancan, only: %i(edit update destroy)
 
   def index
     @posts = Post.page(params[:page]).per 5
@@ -9,6 +10,7 @@ class PostsController < ApplicationController
   end
 
   def edit
+    
   end
 
   def update
@@ -42,5 +44,9 @@ class PostsController < ApplicationController
 
   def post_params
     params.require(:post).permit :title, :body
+  end
+
+  def authorize_by_cancan
+    authorize! :manage, @post
   end
 end
