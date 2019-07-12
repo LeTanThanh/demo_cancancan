@@ -4,6 +4,6 @@
     <small>by <%= link_to post.user.name, "#" %></small>
   </div>
   <div class="panel-body">
-    <%= post.body %>
+    <%= post.body.first(400) + " ..." %> <%= link_to "Readmore", "#" %>
   </div>
 </div>
