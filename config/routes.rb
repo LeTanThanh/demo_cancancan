@@ -5,4 +5,6 @@ Rails.application.routes.draw do
     registrations: "user/registrations",
     sessions: "user/sessions"
   }
+
+  resources :posts, only: :show
 end
