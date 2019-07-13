@@ -6,5 +6,7 @@ Rails.application.routes.draw do
     sessions: "user/sessions"
   }
 
+  devise_for :admins
+
   resources :posts
 end
