@@ -9,7 +9,8 @@ module Ability
       if user
         # ability for logged in usser
         can :manage, Post, user_id: user.id
-        can :manage, Comment, user_id: user.id
+        can :create, Comment
+        can [:update, :destroy], Comment, user_id: user.id
         can :destroy, Comment, post: { user_id: user.id }
 
         # ability for admin usser
