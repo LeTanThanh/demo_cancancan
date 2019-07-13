@@ -13,6 +13,10 @@ class CommentsController < ApplicationController
     @comment.update_attributes comment_params
   end
 
+  def destroy
+    @comment.destroy
+  end
+
   private
 
   def comment_params
