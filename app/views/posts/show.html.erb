@@ -1,9 +1,8 @@
 <div class="container">
+  <h2>Post <%= @post.title %></h2>
+  <div>by <%= link_to @post.user.name, "#" %></div><br><br>
+
   <div class="panel panel-default">
-    <div class="panel-heading">
-      Post <%= @post.title %><br>
-      <small>by <%= link_to @post.user.name, "#" %></small>
-    </div>
     <div class="panel-body">
       <%= @post.body %>
     </div>
@@ -13,4 +12,10 @@
       </div>
     <% end %>
   </div>
+
+  <h3>Comments</h3>
+  
+  <%= render partial: "comment", collection: @comments %>
+
+  <%= paginate @comments %>
 </div>

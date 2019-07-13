@@ -4,7 +4,7 @@ class PostsController < ApplicationController
   load_and_authorize_resource
 
   def index
-    @posts = Post.page(params[:page]).per 5
+    @posts = Post.includes(:user, :comments).order(created_at: :desc).page(params[:page]).per 5
   end
 
   def new
@@ -23,6 +23,7 @@ class PostsController < ApplicationController
   end
 
   def show
+    @comments = @post.comments.includes(:user).order(created_at: :desc).page(params[:page]).per 3
   end
 
   def edit
