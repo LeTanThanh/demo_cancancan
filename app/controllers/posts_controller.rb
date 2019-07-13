@@ -2,8 +2,24 @@ class PostsController < ApplicationController
   before_action :load_post, only: %i(show edit update destroy)
   # before_action :authorize_by_cancan, only: %i(edit update destroy)
   load_and_authorize_resource
+
   def index
     @posts = Post.page(params[:page]).per 5
+  end
+
+  def new
+  end
+
+  def create
+    @post = Post.create post_params.merge(user: current_user)
+
+    if @post.valid?
+      flash[:success] = "Create post success"
+      redirect_to @post
+    else
+      flash[:danger] = "Create post fail"
+      render :new
+    end
   end
 
   def show
