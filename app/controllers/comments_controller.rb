@@ -4,14 +4,9 @@ class CommentsController < ApplicationController
 
   def create
     @comment = Comment.create comment_params.merge user: current_user
+  end
 
-    if @comment.valid?
-      flash[:success] = "Create comment success"
-    else
-      flash[:danger] = "Create comment fail"
-    end
-
-    redirect_back(fallback_location: root_url)
+  def update
   end
 
   private

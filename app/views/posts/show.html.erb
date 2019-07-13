@@ -17,7 +17,9 @@
   
   <%= render "posts/form_comment", comment: @comment if can?(:create, Comment) %>
 
-  <%= render partial: "posts/comment", collection: @comments %>
+  <div class="js-comments">
+    <%= render partial: "posts/comment", collection: @comments %>
+  </div>
 
   <%= paginate @comments %>
 </div>

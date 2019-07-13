@@ -1,0 +1,7 @@
+<% if @comment.valid? %>
+  $('.js-comment-body').val('');
+  $('.js-comment-error').text('');
+  $('.js-comments').prepend('<%= j (render "posts/comment", comment: @comment).html_safe %>');
+<% else %>
+  $('.js-comment-error').text('<%= j (@comment.errors.full_messages.first).html_safe %>');
+<% end %>

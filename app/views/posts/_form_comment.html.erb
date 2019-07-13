@@ -1,7 +1,8 @@
-<%= form_for comment do |f| %>
+<%= form_for comment, remote: true do |f| %>
   <div class="form-group">
-    <%= f.text_area :body, class: "form-control", rows: 3, placeholder: "Enter your comment ..." %>
+    <%= f.text_area :body, class: "form-control js-comment-body", rows: 3, placeholder: "Enter your comment ..." %>
     <%= f.hidden_field :post_id, value: @post.id %>
+    <p class="text-danger js-comment-error"></p>
   </div>
   <%= f.submit "Comment", class: "btn btn-default" %>
 <% end %><br>
