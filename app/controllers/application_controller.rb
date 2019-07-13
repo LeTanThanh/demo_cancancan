@@ -7,4 +7,12 @@ class ApplicationController < ActionController::Base
     flash[:warning] = exception.message
     redirect_to root_url
   end
+
+  def current_ability
+    @current_ability ||= if current_admin
+      Ability::AdminAbility.new(current_admin)
+    else
+      Ability::UserAbility.new(current_user)
+    end
+  end
 end
