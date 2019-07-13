@@ -1,7 +1,10 @@
 <% if @comment.valid? %>
   $('.js-comment-body').val('');
   $('.js-comment-error').text('');
-  $('.js-comments').prepend('<%= j (render "posts/comment", comment: @comment).html_safe %>');
+
+  var comment = '<%= j (render "posts/comment", comment: @comment).html_safe %>';
+  $('.js-comments').prepend(comment);
 <% else %>
-  $('.js-comment-error').text('<%= j (@comment.errors.full_messages.first).html_safe %>');
+  var error = '<%= j (@comment.errors.full_messages.first).html_safe %>';
+  $('.js-comment-error').text(error);
 <% end %>

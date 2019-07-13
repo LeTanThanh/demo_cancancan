@@ -15,7 +15,7 @@
 
   <h3>Comments</h3>
   
-  <%= render "posts/form_comment", comment: @comment if can?(:create, Comment) %>
+  <%= render "posts/form_comment", comment: @comment, post: @post if can?(:create, Comment) %>
 
   <div class="js-comments">
     <%= render partial: "posts/comment", collection: @comments %>

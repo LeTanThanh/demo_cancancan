@@ -11,5 +11,5 @@ Rails.application.routes.draw do
   }
 
   resources :posts
-  resources :comments, only: :create
+  resources :comments, only: %i(create edit update)
 end

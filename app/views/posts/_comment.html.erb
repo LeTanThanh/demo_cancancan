@@ -1,21 +1,23 @@
-<div class="panel panel-default">
-  <div class="panel-heading">
-    Commented by <%= link_to comment.user.name, "#" %>
-  </div>
-  <div class="panel-body">
-    <%= comment.body %>
-  </div>
-  <% if can?(:update, comment) || can?(:destroy, comment) %>
-    <div class="panel-footer">
-      <% if can?(:update, comment) %>
-        <%= link_to "Update Comment", "#" %>
-      <% end %>
-      <% if can?(:update, comment) && can?(:destroy, comment) %>
-        |
-      <% end %>
-      <% if can?(:destroy, comment) %>
-        <%= link_to "Delete comment", "#" %>
-      <% end %>
+<div class="js-comment" data-comment-id="<%= comment.id %>">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      Commented by <%= link_to comment.user.name, "#" %>
     </div>
-  <% end %>
+    <div class="panel-body">
+      <%= comment.body %>
+    </div>
+    <% if can?(:update, comment) || can?(:destroy, comment) %>
+      <div class="panel-footer">
+        <% if can?(:update, comment) %>
+          <%= link_to "Update Comment", edit_comment_path(comment), remote: true %>
+        <% end %>
+        <% if can?(:update, comment) && can?(:destroy, comment) %>
+          |
+        <% end %>
+        <% if can?(:destroy, comment) %>
+          <%= link_to "Delete comment", "#" %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
 </div>

@@ -1,0 +1,2 @@
+var form = '<%= j (render "posts/form_comment", comment: @comment, post: @comment.post).html_safe %>';
+$('.js-comment[data-comment-id="'+ '<%= @comment.id %>' +'"]').html(form);
