@@ -1,4 +1,7 @@
-User.create name: "TanThanhle", email: "le.tan.thanh@sun-asterisk.com",
+Admin.create name: "Admin", email: "admin@sun-asterisk.com",
+  password: "Aa@123456", password_confirmation: "Aa@123456"
+
+User.create name: "TanThanhLe", email: "le.tan.thanh@sun-asterisk.com",
   password: "Aa@123456", password_confirmation: "Aa@123456", is_admin: true
 
 5.times do

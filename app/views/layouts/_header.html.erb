@@ -27,6 +27,17 @@
             <span class="glyphicon glyphicon-log-out"></span> Logout
           <% end %>
         </li>
+      <% elsif admin_signed_in? %>
+        <li>
+          <%= link_to "#" do %>
+            <span class="glyphicon glyphicon-user"></span> <%= current_admin.name %>
+          <% end %>
+        </li>
+        <li>
+          <%= link_to destroy_admin_session_path, method: :delete do %>
+            <span class="glyphicon glyphicon-log-out"></span> Logout
+          <% end %>
+        </li>
       <% else %>
         <li>
           <%= link_to new_user_registration_path do %>
