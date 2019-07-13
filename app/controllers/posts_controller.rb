@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+  before_action :authenticate_user!, only: %i(edit update destroy)
   before_action :load_post, only: %i(show edit update destroy)
   # before_action :authorize_by_cancan, only: %i(edit update destroy)
   load_and_authorize_resource
@@ -24,6 +25,7 @@ class PostsController < ApplicationController
 
   def show
     @comments = @post.comments.includes(:user).order(created_at: :desc).page(params[:page]).per 3
+    @comment = Comment.new
   end
 
   def edit

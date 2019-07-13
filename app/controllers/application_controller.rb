@@ -15,4 +15,9 @@ class ApplicationController < ActionController::Base
       Ability::UserAbility.new(current_user)
     end
   end
+
+  def authenticate_user!
+    return super if current_user
+    authenticate_admin!
+  end
 end

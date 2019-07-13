@@ -15,7 +15,9 @@
 
   <h3>Comments</h3>
   
-  <%= render partial: "comment", collection: @comments %>
+  <%= render "posts/form_comment", comment: @comment if can?(:create, Comment) %>
+
+  <%= render partial: "posts/comment", collection: @comments %>
 
   <%= paginate @comments %>
 </div>
